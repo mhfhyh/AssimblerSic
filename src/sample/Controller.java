@@ -6,9 +6,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 
 
-
-
 public class Controller {
+
+    @FXML
+    Button x ;
     @FXML
     TextArea textArea = new TextArea();
     @FXML
