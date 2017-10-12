@@ -8,18 +8,19 @@ import javafx.scene.control.TextArea;
 
 public class Controller {
 
-    @FXML
-    Button x ;
-    @FXML
-    TextArea textArea = new TextArea();
-    @FXML
-    Button ok = new Button("Ok");
-    public Controller(){
 
-     ok.setOnAction(event -> {
-         ObservableList<CharSequence> code = textArea.getParagraphs();
-         System.out.print(code);});
+    @FXML
+    TextArea textArea  ;
 
+    @FXML
+    Button ok = new Button();
+
+    ObservableList<CharSequence> code;
+
+
+    public void okOnAction(){
+        code   = textArea.getParagraphs();
+        System.out.print(code);
     }
     /*private String[] linesSprator(String code){
         String[] lines= new String[];
