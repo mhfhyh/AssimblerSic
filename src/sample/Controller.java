@@ -12,7 +12,7 @@ import java.util.*;
 
 
 public class Controller {
-    private int startAdress=0;
+    private int startAddress =0;
     private int PC=0;
     private int lineCounter=0;
     private TreeMap<String,Integer> symbolTable = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
@@ -21,6 +21,10 @@ public class Controller {
     private Map<Integer,String> intermediate = new HashMap<>();
     private int proramLength =0;
     private String programName;
+
+    private int operation=0;
+    private int label=1;
+    private int id=2;
 
 
     @FXML
@@ -45,7 +49,7 @@ public class Controller {
 
         opcode.put("comp","00101000");
 
-        opcode.put("jle" ,"00111000");//is wrong 'jle' -> jlt
+        opcode.put("jlt" ,"00111000");
         opcode.put("jeq" ,"00110000");
         opcode.put("jgt" ,"00110100");
 
@@ -66,7 +70,6 @@ public class Controller {
         //pass 1
         Iterator<CharSequence> itPass1 =code.iterator();
         int[] operIndex= new int[code.size()+1];
-
         for (int x : operIndex)x=1;//make it all one by default unless someone but a label before instruction
 
         while (itPass1.hasNext()){ //iterate throw each line (each iteration for one line)
@@ -83,7 +86,7 @@ public class Controller {
                                 index++;
                                 }
                                       if(status){// if start operation found in the first line of program
-                                        startAdress = PC = Integer.valueOf(words.get(++index));
+                                        startAddress = PC = Integer.valueOf(words.get(++index));
                                         System.out.println(PC);}
                         }//end if it is start address يجب أن يغير هذا الكود يوجد به خطأ
 
@@ -116,7 +119,7 @@ public class Controller {
         }// end of while loop -> iterate throw each line
 
 
-        proramLength = PC - startAdress;
+        proramLength = PC - startAddress;
         // end of pass one
 
 
